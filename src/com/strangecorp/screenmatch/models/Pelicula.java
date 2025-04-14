@@ -1,41 +1,8 @@
-import java.util.Arrays;
+package com.strangecorp.screenmatch.models;
 
-public class Pelicula {
-    String nombre, pais, direccion, genero;
-    int lanzamiento, duracion;
-    boolean incluidoEnElPlan;
-    private double [] nota = new double[3];
-    double clasificacion;
+public class Pelicula extends Titulo{
 
-    private int indice = 0;
-
-    void fichaTecnica(){
-        System.out.println("Título: "+nombre);
-        System.out.println("Dirección: "+direccion);
-        System.out.println("Duración: "+duracion);
-        System.out.println("Año: "+lanzamiento);
-        System.out.println("País: "+pais);
-        System.out.println("Genero: "+genero);
+    public Pelicula(String nombre, String genero, String director, String pais, String idioma, String sinopsis, int lanzamiento, int duracion, boolean incluidoEnElPlan, boolean postCreditos) {
+        super(nombre, genero, director, pais, idioma, sinopsis, lanzamiento, duracion, incluidoEnElPlan, postCreditos);
     }
-
-    void agregarNotas(double valor){
-        try {
-
-            if (indice <= nota.length) {
-                nota[indice] = valor;
-                System.out.print("Nota " + (indice + 1) + ": ");
-                System.out.println(nota[indice]);
-                indice++;
-            }
-        } catch(Exception e){
-                System.out.println("ERROR: El array esta lleno");
-        }
-    }
-
-    void promedioNotas(){
-        clasificacion = (Arrays.stream(nota).sum()/Arrays.stream(nota).count());
-        System.out.printf("Clasificacion %.2f estrellas",clasificacion);
-    }
-
-
 }
