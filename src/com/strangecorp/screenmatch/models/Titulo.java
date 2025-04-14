@@ -1,0 +1,152 @@
+package com.strangecorp.screenmatch.models;
+
+import java.util.ArrayList;
+
+public class Titulo {
+    private String nombre, genero, director, pais, idioma, sinopsis ;
+    private int lanzamiento, duracion;
+    private boolean incluidoEnElPlan, postCreditos;
+    private ArrayList<Double> notas = new ArrayList<>();
+    private ArrayList<String> premios = new ArrayList<>();
+
+    public Titulo(String nombre, String genero, String director, String pais, String idioma, String sinopsis, int lanzamiento, int duracion, boolean incluidoEnElPlan, boolean postCreditos) {
+        this.nombre = nombre;
+        this.genero = genero;
+        this.director = director;
+        this.pais = pais;
+        this.idioma = idioma;
+        this.sinopsis = sinopsis;
+        this.lanzamiento = lanzamiento;
+        this.duracion = duracion;
+        this.incluidoEnElPlan = incluidoEnElPlan;
+        this.postCreditos = postCreditos;
+    }
+
+    //MetodosGetters and Setter
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getGenero() {
+        return genero;
+    }
+
+    public void setGenero(String genero) {
+        this.genero = genero;
+    }
+
+    public String getDirector() {
+        return director;
+    }
+
+    public void setDirector(String director) {
+        this.director = director;
+    }
+
+    public String getPais() {
+        return pais;
+    }
+
+    public void setPais(String pais) {
+        this.pais = pais;
+    }
+
+    public String getIdioma() {
+        return idioma;
+    }
+
+    public void setIdioma(String idioma) {
+        this.idioma = idioma;
+    }
+
+    public String getSinopsis() {
+        return sinopsis;
+    }
+
+    public void setSinopsis(String sinopsis) {
+        this.sinopsis = sinopsis;
+    }
+
+    public int getLanzamiento() {
+        return lanzamiento;
+    }
+
+    public void setLanzamiento(int lanzamiento) {
+        this.lanzamiento = lanzamiento;
+    }
+
+    public int getDuracion() {
+        return duracion;
+    }
+
+    public void setDuracion(int duracion) {
+        this.duracion = duracion;
+    }
+
+    public boolean isIncluidoEnElPlan() {
+        return incluidoEnElPlan;
+    }
+
+    public void setIncluidoEnElPlan(boolean incluidoEnElPlan) {
+        this.incluidoEnElPlan = incluidoEnElPlan;
+    }
+
+    public boolean isPostCreditos() {
+        return postCreditos;
+    }
+
+    public void setPostCreditos(boolean postCreditos) {
+        this.postCreditos = postCreditos;
+    }
+
+    public ArrayList<String> getPremios() {
+        return premios;
+    }
+
+    //Metodos especiales
+    public void agregarPremio(String premio){
+        premios.add(premio);
+    }
+
+    public void agregarNota(double nota){
+        if (nota < 0 || nota > 10) {
+            System.out.println("La nota debe de ser entre 0 y 10");
+        }
+        notas.add(nota);
+    }
+
+    public Double getClasificacion() {
+        if (notas.isEmpty()){
+            System.out.println("No existen puntuaciones registradas");
+            return 0.0;
+        }
+        double suma = 0;
+        for (Double nota : notas){
+            suma += nota;
+        }
+        return suma / notas.size();
+    }
+
+    @Override
+    public String toString() {
+        return """
+                📽️ Título: %s
+                🎭 Género: %s
+                🎬 Director: %s
+                🌍 País: %s | 🗣️ Idioma: %s
+                📝 Sinopsis: %s
+                📅 Año: %d | ⏱️ Duración: %d min
+                🎫 Incluido en plan: %s | 🎞️ Tiene post-créditos: %s
+                🏆 Premios: %s
+                ⭐ Clasificación: %.1f
+                """.formatted(nombre, genero, director, pais, idioma, sinopsis, lanzamiento, duracion,
+                incluidoEnElPlan ? "Sí" : "No",
+                postCreditos ? "Sí" : "No",
+                premios.isEmpty() ? "Esta pelicula aun no tiene premios" : String.join(", ", premios),
+                getClasificacion());
+    }
+}
