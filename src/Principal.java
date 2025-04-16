@@ -1,54 +1,77 @@
+import com.strangecorp.screenmatch.calculations.FiltroRecomendacion;
+import com.strangecorp.screenmatch.models.Episodio;
 import com.strangecorp.screenmatch.models.Pelicula;
 import com.strangecorp.screenmatch.models.Serie;
-import com.strangecorp.screenmatch.calculators.TiempoDeVisualizacion;
+import com.strangecorp.screenmatch.calculations.TiempoDeVisualizacion;
 
 public class Principal {
     public static void main(String[] args) {
-        Pelicula p1 = new Pelicula("Flow",
+        Pelicula flow = new Pelicula("Flow",
                 "Animada",
                 "Gints Zilbalodis",
                 "Letonia",
-                "Mudo",
+                "Sin Dialogos",
                 "Un gato tendra que sobrevivir junto a otros animales una inundación en un mundo desavitado por los seres humanos",
                 2024,
                 80,
                 true,
                 true);
-        p1.agregarNota(7.9);
-        p1.agregarNota(3.4);
-        p1.agregarNota(5.6);
-        p1.agregarPremio("Oscar 2025: Mejor Pelicula Animada");
-        p1.agregarPremio("Globo de Oro: Mejor Pelicula Animada");
+        flow.agregarNota(8.9);
+        flow.agregarNota(9.4);
+        flow.agregarNota(8.6);
+        flow.agregarPremio("Oscar 2025: Mejor Pelicula Animada");
+        flow.agregarPremio("Globo de Oro: Mejor Pelicula Animada");
 
-        Serie s1 = new Serie(
-                "Breaking Bad",
-                "Drama criminal, Suspenso, Humor negro",
-                "Vince Gilligan",
-                "Estados Unidos",
+
+        Serie laCasaDelDragon = new Serie(
+                "La Casa del Dragón",
+                "Fantasía, Drama, Acción",
+                "Ryan Condal, Miguel Sapochnik",
+                "Reino Unido, Estados Unidos",
                 "Inglés",
-                "Walter White, un profesor de química, se convierte en fabricante de metanfetaminas tras ser diagnosticado con cáncer de pulmón inoperable.",
-                2008,
-                47,
+                "Una precuela de Juego de Tronos que narra el auge y la caída de la Casa Targaryen, incluyendo la guerra civil conocida como la Danza de los Dragones.", // sinopsis
+                2022,
+                1080,
                 true,
                 false,
-                62,
-                5,
-                false);
-        s1.agregarNota(9.9);
-        s1.agregarNota(9.4);
-        s1.agregarNota(10.0);
-        s1.agregarPremio("Globo de Oro");
-        s1.agregarPremio("Premios Emmy");
+                18,
+                2,
+                true
+        );
 
-        System.out.println(p1);
-        System.out.println("////////////////////////////////////////////////////////////////////////////////////////////////////////");
-        System.out.println(s1);
+        laCasaDelDragon.agregarNota(9.9);
+        laCasaDelDragon.agregarNota(9.4);
+        laCasaDelDragon.agregarNota(10.0);
+        laCasaDelDragon.agregarPremio("Globo de Oro 2023");
+        laCasaDelDragon.agregarPremio("Premios Emmy 2023");
+
+        Episodio episodio = new Episodio(
+                "Los Herederos Del Dragon",
+                1,
+                1,
+                "Viserys prepara un torneo para celebrar el nacimiento de su segundo hijo. Rhaenyra le da la bienvenida a su tío Daemon cuando vuelve a la Fortaleza Roja.",
+                62,
+                laCasaDelDragon,
+                500);
+
+        FiltroRecomendacion filtroRecomendacion = new FiltroRecomendacion();
 
         TiempoDeVisualizacion tiempoDeVisualizacion = new TiempoDeVisualizacion();
-        tiempoDeVisualizacion.setDuracionTitulo(p1);
-        tiempoDeVisualizacion.setDuracionTitulo(s1);
+        tiempoDeVisualizacion.setDuracionTitulo(flow);
+        tiempoDeVisualizacion.setDuracionTitulo(laCasaDelDragon);
 
-        System.out.printf("El tiempo total que te tomara ver %s y %s es de %d minutos", p1.getNombre(), s1.getNombre(), tiempoDeVisualizacion.getTiempoTotal());
+        System.out.print(flow);
+        filtroRecomendacion.filtro(flow);
+
+        System.out.println("//////////////////////////////////////////////////////");
+        System.out.print(laCasaDelDragon);
+        System.out.println("------------------------------------------------------");
+        System.out.print(episodio);
+        filtroRecomendacion.filtro(episodio);
+
+        System.out.println("//////////////////////////////////////////////////////");
+        System.out.printf("El tiempo total que te tomara ver %s y %s es de %d minutos", flow.getNombre(), laCasaDelDragon.getNombre(), tiempoDeVisualizacion.getTiempoTotal());
+
 
     }
 }
