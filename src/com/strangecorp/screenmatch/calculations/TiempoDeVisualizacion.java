@@ -1,4 +1,4 @@
-package com.strangecorp.screenmatch.calculators;
+package com.strangecorp.screenmatch.calculations;
 
 import com.strangecorp.screenmatch.models.Titulo;
 
