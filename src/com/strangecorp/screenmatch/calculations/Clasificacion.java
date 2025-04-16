@@ -1,4 +1,5 @@
 package com.strangecorp.screenmatch.calculations;
 
-public class Clasificacion {
+public interface Clasificacion {
+    int getClasificacion();
 }
