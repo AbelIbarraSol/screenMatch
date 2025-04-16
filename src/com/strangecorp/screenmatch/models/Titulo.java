@@ -119,7 +119,7 @@ public class Titulo {
         notas.add(nota);
     }
 
-    public Double getClasificacion() {
+    public Double calculoDeMedia() {
         if (notas.isEmpty()){
             System.out.println("No existen puntuaciones registradas");
             return 0.0;
@@ -147,6 +147,6 @@ public class Titulo {
                 incluidoEnElPlan ? "Sí" : "No",
                 postCreditos ? "Sí" : "No",
                 premios.isEmpty() ? "Esta pelicula aun no tiene premios" : String.join(", ", premios),
-                getClasificacion());
+                calculoDeMedia());
     }
 }
