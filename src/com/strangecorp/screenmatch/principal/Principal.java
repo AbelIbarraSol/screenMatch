@@ -1,8 +1,10 @@
+package com.strangecorp.screenmatch.principal;
+
 import com.strangecorp.screenmatch.calculations.FiltroRecomendacion;
+import com.strangecorp.screenmatch.calculations.TiempoDeVisualizacion;
 import com.strangecorp.screenmatch.models.Episodio;
 import com.strangecorp.screenmatch.models.Pelicula;
 import com.strangecorp.screenmatch.models.Serie;
-import com.strangecorp.screenmatch.calculations.TiempoDeVisualizacion;
 
 import java.util.ArrayList;
 
@@ -54,7 +56,7 @@ public class Principal {
         System.out.println(listaDePeliculas.get(0).getNombre());
         System.out.println(listaDePeliculas.size());
         System.out.println(listaDePeliculas);
-/*
+
         Serie laCasaDelDragon = new Serie(
                 "La Casa del Dragón","Fantasía, Drama, Acción",
                 "Ryan Condal, Miguel Sapochnik","Reino Unido, Estados Unidos",
@@ -97,7 +99,7 @@ public class Principal {
 
         System.out.println("//////////////////////////////////////////////////////");
         System.out.printf("El tiempo total que te tomara ver %s y %s es de %d minutos", flow.getNombre(), laCasaDelDragon.getNombre(), tiempoDeVisualizacion.getTiempoTotal());
-*/
+
 
 
     }

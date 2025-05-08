@@ -1,8 +1,9 @@
 package com.strangecorp.screenmatch.models;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
-public class Titulo {
+public class Titulo implements Comparable<Titulo> {
     private String nombre, genero, director, pais, idioma, sinopsis ;
     private int lanzamiento, duracion;
     private boolean incluidoEnElPlan, postCreditos;
@@ -20,6 +21,11 @@ public class Titulo {
         this.duracion = duracion;
         this.incluidoEnElPlan = incluidoEnElPlan;
         this.postCreditos = postCreditos;
+    }
+
+    public Titulo(String nombre, int lanzamiento) {
+        this.nombre = nombre;
+        this.lanzamiento = lanzamiento;
     }
 
     //MetodosGetters and Setter
@@ -134,6 +140,18 @@ public class Titulo {
     @Override
     public String toString() {
         return """
+                Nombre: %s (%d)
+                """.formatted(getNombre(),getLanzamiento());
+    }
+
+    @Override
+    public int compareTo(Titulo otroTitulo) {
+        return this.getNombre().compareTo(otroTitulo.getNombre());
+    }
+
+    /*@Override
+    public String toString() {
+        return """
                 📽️ Título: %s
                 🎭 Género: %s
                 🎬 Director: %s
@@ -148,5 +166,6 @@ public class Titulo {
                 postCreditos ? "Sí" : "No",
                 premios.isEmpty() ? "Esta pelicula aun no tiene premios" : String.join(", ", premios),
                 calculoDeMedia());
-    }
+    }*/
+
 }

@@ -11,6 +11,10 @@ public class Serie extends Titulo {
         this.enEmision = enEmision;
     }
 
+    public Serie(String nombre, int lanzamiento){
+        super(nombre,lanzamiento);
+    }
+
     public int getCantidadDeEpisodios() {
         return cantidadDeEpisodios;
     }
@@ -43,12 +47,8 @@ public class Serie extends Titulo {
 
     @Override
     public String toString() {
-        return super.toString() + """
-                🔢 Temporadas: %d
-                🔢 Episodios: %d
-                ❓  Estado: %s  
-                """.formatted(cantidadDeTemporadas,
-                cantidadDeEpisodios,
-                enEmision? "En Emision" : "Concluido");
+        return """
+                Serie: %s (%d)
+                """.formatted(getNombre(),getLanzamiento());
     }
 }

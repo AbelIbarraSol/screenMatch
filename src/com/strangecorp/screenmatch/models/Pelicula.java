@@ -8,8 +8,19 @@ public class Pelicula extends Titulo implements Clasificacion {
         super(nombre, genero, director, pais, idioma, sinopsis, lanzamiento, duracion, incluidoEnElPlan, postCreditos);
     }
 
+    public Pelicula(String nombre, int lanzamiento) {
+        super(nombre, lanzamiento);
+    }
+
     @Override
     public int getClasificacion() {
         return (int) (calculoDeMedia() / 2);
+    }
+
+    @Override
+    public String toString() {
+        return """
+                Pelicula: %s (%d)
+                """.formatted(getNombre(),getLanzamiento());
     }
 }
