@@ -149,23 +149,4 @@ public class Titulo implements Comparable<Titulo> {
         return this.getNombre().compareTo(otroTitulo.getNombre());
     }
 
-    /*@Override
-    public String toString() {
-        return """
-                📽️ Título: %s
-                🎭 Género: %s
-                🎬 Director: %s
-                🌍 País: %s | 🗣️ Idioma: %s
-                📝 Sinopsis: %s
-                📅 Año: %d | ⏱️ Duración: %d min
-                🎫 Incluido en plan: %s | 🎞️ Tiene post-créditos: %s
-                🏆 Premios: %s
-                ⭐ Clasificación: %.1f
-                """.formatted(nombre, genero, director, pais, idioma, sinopsis, lanzamiento, duracion,
-                incluidoEnElPlan ? "Sí" : "No",
-                postCreditos ? "Sí" : "No",
-                premios.isEmpty() ? "Esta pelicula aun no tiene premios" : String.join(", ", premios),
-                calculoDeMedia());
-    }*/
-
 }
