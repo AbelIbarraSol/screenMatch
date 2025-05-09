@@ -1,14 +1,13 @@
+package com.strangecorp.screenmatch.principal;
+
 import com.strangecorp.screenmatch.calculations.FiltroRecomendacion;
 import com.strangecorp.screenmatch.models.Episodio;
 import com.strangecorp.screenmatch.models.Pelicula;
 import com.strangecorp.screenmatch.models.Serie;
 import com.strangecorp.screenmatch.calculations.TiempoDeVisualizacion;
 
-import java.util.ArrayList;
-
 public class Principal {
     public static void main(String[] args) {
-        ArrayList<Pelicula> listaDePeliculas = new ArrayList<>();
         var flow = new Pelicula("Flow",
                 "Animada","Gints Zilbalodis",
                 "Letonia","Sin Dialogos",
@@ -45,16 +44,6 @@ public class Principal {
         parasitos.agregarPremio("Óscar 2020: Mejor Película");
         parasitos.agregarPremio("Palma de Oro en el Festival de Cannes 2019");
 
-
-        listaDePeliculas.add(flow);
-        listaDePeliculas.add(lMvsM);
-        listaDePeliculas.add(parasitos);
-
-
-        System.out.println(listaDePeliculas.get(0).getNombre());
-        System.out.println(listaDePeliculas.size());
-        System.out.println(listaDePeliculas);
-/*
         Serie laCasaDelDragon = new Serie(
                 "La Casa del Dragón","Fantasía, Drama, Acción",
                 "Ryan Condal, Miguel Sapochnik","Reino Unido, Estados Unidos",
@@ -65,14 +54,13 @@ public class Principal {
                 false,18,
                 2,true
         );
-
         laCasaDelDragon.agregarNota(9.9);
         laCasaDelDragon.agregarNota(9.4);
         laCasaDelDragon.agregarNota(10.0);
         laCasaDelDragon.agregarPremio("Globo de Oro 2023");
         laCasaDelDragon.agregarPremio("Premios Emmy 2023");
 
-        Episodio episodio = new Episodio(
+        Episodio ep01HoD = new Episodio(
                 "Los Herederos Del Dragon",
                 1,
                 1,
@@ -81,24 +69,22 @@ public class Principal {
                 laCasaDelDragon,
                 500);
 
-        FiltroRecomendacion filtroRecomendacion = new FiltroRecomendacion();
-
-        TiempoDeVisualizacion tiempoDeVisualizacion = new TiempoDeVisualizacion();
-        tiempoDeVisualizacion.setDuracionTitulo(flow);
-        tiempoDeVisualizacion.setDuracionTitulo(laCasaDelDragon);
-
-
+        System.out.println(flow);
+        System.out.println(lMvsM);
+        System.out.println(parasitos);
 
         System.out.println("//////////////////////////////////////////////////////");
         System.out.print(laCasaDelDragon);
         System.out.println("------------------------------------------------------");
-        System.out.print(episodio);
-        filtroRecomendacion.filtro(episodio);
+        System.out.print(ep01HoD);
+
+        FiltroRecomendacion filtroRecomendacion = new FiltroRecomendacion();
+        filtroRecomendacion.filtro(ep01HoD);
 
         System.out.println("//////////////////////////////////////////////////////");
+        TiempoDeVisualizacion tiempoDeVisualizacion = new TiempoDeVisualizacion();
+        tiempoDeVisualizacion.setDuracionTitulo(flow);
+        tiempoDeVisualizacion.setDuracionTitulo(laCasaDelDragon);
         System.out.printf("El tiempo total que te tomara ver %s y %s es de %d minutos", flow.getNombre(), laCasaDelDragon.getNombre(), tiempoDeVisualizacion.getTiempoTotal());
-*/
-
-
     }
 }
